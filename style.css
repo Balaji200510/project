@@ -1,0 +1,344 @@
+/* Global Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', 'Google Sans', sans-serif;
+  /* Animated Deep Gradient */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #1A1A2E);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  background-attachment: fixed;
+  color: #fff;
+  line-height: 1.7;
+  /* Increased for editorial feel */
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Layout Containers */
+.main-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Header Styling */
+.main-header {
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+}
+
+.main-head {
+  font-size: 4.5rem;
+  /* Even larger */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  /* More spacing */
+  background: linear-gradient(to right, #00c6ff, #0072ff, #ff00cc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.main-head .sponsor {
+  display: block;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  margin-top: 15px;
+  text-transform: none;
+  letter-spacing: 2px;
+  text-shadow: none;
+}
+
+/* Section Styling */
+.content-section {
+  margin-bottom: 90px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 50px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 80px;
+  height: 5px;
+  background: linear-gradient(to right, #ff00cc, #333399);
+  /* Neon accent */
+  border-radius: 3px;
+  box-shadow: 0 0 15px #ff00cc;
+  /* Glow */
+}
+
+/* Glassmorphism Card System */
+.card-grid {
+  /* Simple grid-like layout using margins if not using Grid/Flex (per old request rules, but using more modern spacing) */
+  text-align: center;
+}
+
+.card {
+  /* Glassmorphism Core */
+  background: rgba(255, 255, 255, 0.05);
+  /* Lighter touch */
+  backdrop-filter: blur(20px);
+  /* Stronger blur */
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 60px;
+
+  /* Modern soft shadow */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  /* For inner glows */
+  position: relative;
+}
+
+/* NEON HOVER EFFECTS */
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 242, 96, 0.2);
+  /* Green-ish glow base */
+  border-color: rgba(0, 242, 96, 0.6);
+  /* Neon Green Border */
+}
+
+/* Alternate Glows for different cards if we had specific classes,
+   but for now a generic beautiful hover */
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Song Cards specific */
+.song-card {
+  text-align: left;
+  /* Using display block for layout safety but styling to look good */
+  border-left: none;
+  /* Resetting old style */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+}
+
+.song-card:hover {
+  border-color: #ff00cc;
+  /* Pink Neon for Songs */
+  box-shadow: 0 20px 60px rgba(255, 0, 204, 0.2);
+}
+
+.song-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+audio {
+  width: 100%;
+  height: 45px;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  filter: invert(1) hue-rotate(180deg) saturate(2);
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+audio:hover {
+  opacity: 1;
+}
+
+/* Movie Cards specific */
+.movie-card .card-header {
+  margin-bottom: 35px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+}
+
+.movie-card:hover {
+  border-color: #00c6ff;
+  /* Blue Neon for Movies */
+  box-shadow: 0 20px 60px rgba(0, 198, 255, 0.2);
+}
+
+.movie-card h3 {
+  font-size: 2rem;
+  color: #fff;
+  display: block;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.movie-card u {
+  text-decoration: none;
+  /* Remove default underline */
+  border-bottom: 3px solid #00f260;
+  /* Custom underline */
+  padding-bottom: 3px;
+  box-shadow: 0 2px 5px rgba(0, 242, 96, 0.3);
+  /* Glowing underline */
+}
+
+.movie-card .stats {
+  display: inline-block;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.movie-card mark {
+  background-color: transparent;
+  color: #00f260;
+  /* Neon Green */
+  font-weight: bold;
+  padding: 0;
+  text-shadow: 0 0 10px rgba(0, 242, 96, 0.5);
+}
+
+/* Media Content */
+.media-content {
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  /* Fallback for responsiveness */
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Responsive adjustment without media queries (as per pure CSS request previously, keeping it simple) */
+.media-content img,
+.media-content video {
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.media-content img {
+  width: 300px;
+}
+
+.media-content img:hover {
+  transform: scale(1.05) rotate(-3deg);
+  box-shadow: 0 20px 50px rgba(255, 255, 255, 0.1);
+  /* Subtle white glow */
+}
+
+.media-content video {
+  width: 650px;
+  background: #000;
+}
+
+.media-content video:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 198, 255, 0.3);
+  /* Cinema glow */
+}
+
+/* Description Text */
+.description {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: justify;
+  line-height: 2;
+  font-weight: 300;
+  padding: 0 20px;
+  letter-spacing: 0.3px;
+}
+
+.description strong u {
+  color: #00f260;
+  border-color: #00f260;
+  text-shadow: 0 0 10px rgba(0, 242, 96, 0.4);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f2027;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#00c6ff, #0072ff);
+  border-radius: 6px;
+  border: 2px solid #0f2027;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#0072ff, #00c6ff);
+}
